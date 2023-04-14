@@ -7,55 +7,19 @@
 2.5. EXPIRY DATE — поле с типом дата
 2.6. Визуальная часть должна быть приблизительна похожа на то, что я нарисовал -->
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DZ_19</title>
-    <link rel="stylesheet" href="style/main.css">
-</head>
-
-<body>
-    <div class="container">
-        <form class="form" action="" method="post">
-            <section class="payment-details">
-                <div class="container">
-                    <h3 class="title">PAYMENT DETAILS</h3>
-                    <div></div>
-                </div>
-            </section>
-
-            <section class="billing-address">
-                <h3 class="title">BILLING ADDRESS</h3>
-            </section>
-            <button class="btn" type="submit" name="submit">PAY</button>
-        </form>
-    </div>
-</body>
-</html>
-
-
-
-
-
-
-
-
-<div class="parent">
+<div class="container">
+  
   <form class="form" action="" method="post">
 
-    <!-- PAYMENT DETAILS   -->
-    <section class="payment-details">
+    <!-- PAYMENT DETAILS -->
+    <section class="form__container">
       <h3 class="title">PAYMENT DETAILS</h2>
-      <div class="box">
 
         <!-- NAME OF CARD -->
         <div class="form__datalist">
             <input 
-            require 
+            class="form__input"
+            required 
             type="text" 
             id="card" 
             name="usercard" 
@@ -64,15 +28,16 @@
             />
         
             <datalist id="cardname">
-              <option>Visa</option>
-              <option>Mastercard</option>
-              <option>Ametican Express</option>
-              <option>Revolute</option>
+              <option class="form__datalist_item">Visa</option>
+              <option class="form__datalist_item">Mastercard</option>
+              <option class="form__datalist_item">Ametican Express</option>
+              <option class="form__datalist_item">Revolute</option>
             </datalist>
         </div>
 
+      <div class="box">
         <!-- CARD NUMBER -->
-        <div class="payment-details__cardnumber">
+        <div class="box__item">
             <input 
             class="form__input"
             required 
@@ -80,64 +45,58 @@
             id="cardnum" 
             name="cardnumber" 
             placeholder="CARD NUMBER"
-            value="<?php if(strlen($cardnum) !== 16) echo 'error'; ?>"
             />
         </div>
-
         <!-- EXPIRE DATE -->
-        <div class="payment-details__expiredate">
+        <div class="box__item">
             <input 
+            class="form__input"
             required
-            type="date" 
+            type="text" 
             id="date" 
             name="expiredate" 
+            placeholder="EXPIRE DATE" 
+            onfocus="(this.type='date')" 
+            onblur="(this.type='text')" 
             min="2023-04-13"
             />
         </div>
-
         <!-- CVV -->
-        <div class="payment-details__cvv">
+        <div class="box__item">
             <input 
+            class="form__input"
             required 
             type="password" 
             id="cvv" name="cardcvc" 
             placeholder="CVV" 
-            min="3" 
-            max="3"
+            minlength="3"
+            maxlength="3"
+            pattern="[0-9]*"
             />
         </div>
       </div>
     </section> 
 
     <!-- BILLING ADDRESS -->
-    <section class="billing-address">
+    <section class="form__container">
       <h3 class="title">BILLING ADDRESS</h3>
-      <div class="box">
 
+      <div class="box">
         <!-- NMAE ON CARD -->
-        <div class="billing-address__nameoncard">
+        <div class="box__item">
             <input 
+            class="form__input"
             required 
             type="text" 
             id="nameoncard" 
             name="nameoncard" 
-            placeholder="NMAE ON CARD">
+            placeholder="NMAE ON CARD"
+            />
         </div>
-
-        <!-- STATE PROVINCE -->
-        <div class="billing-address__state-province">
-            <select required id="country" name="state-province">
-              <option value="" disabled selected hidden>STATE PROVINCE</option>
-              <option value="lv">Latvia</option>
-              <option value="ru">Russia</option>
-              <option value="pl">Poland</option>
-              <option value="de">Germany</option>
-            </select>      
-        </div>
-
         <!-- CITY -->
-        <div class="billing-address__city"> 
+        <div class="box__item"> 
             <input 
+            class="form__input"
             required 
             type="text" 
             id="city" 
@@ -145,10 +104,23 @@
             placeholder="CITY"
             />
         </div>
+      </div>
 
+      <div class="box">
+        <!-- STATE PROVINCE -->
+        <div class="box__item">
+            <select class="form__dropdown" required id="country" name="country">
+              <option class="form__dropdown_item" value="" disabled selected hidden>COUNTRY</option>
+              <option class="form__dropdown_item" value="lv">Latvia</option>
+              <option class="form__dropdown_item" value="ru">Russia</option>
+              <option class="form__dropdown_item" value="pl">Poland</option>
+              <option class="form__dropdown_item" value="de">Germany</option>
+            </select>      
+        </div>
         <!-- ZIP CODE -->
-        <div class="billing-address__zipcode">
+        <div class="box__item">
             <input 
+            class="form__input"
             required 
             type="text" 
             id="zip" 
@@ -159,13 +131,105 @@
       </div>
     </section>
 
-    <!-- PAY $888 -->
-    <button class="btn-pay" type="submit" name="pay">PAY $888</button>
-
+    <!-- PAY -->
+    <div class="btn">
+      <button class="btn-submit" type="submit" name="pay">PAY</button>
+    </div>
   </form>
-  
-</div> 
+</div>
 
 
 
 
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+  }
+
+  .container{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form{
+    width: 70%;
+  }
+
+  .title{
+    font-size: 24px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .form__container{
+    margin-bottom: 50px;
+  }
+
+  .form__datalist{
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .form__dropdown{
+    width: 100%;
+    font-size: 16px;
+    padding: 10px 0 9px 0;
+    border-bottom: 1px solid #000;
+    color: #636c72;
+  }
+
+  .form__dropdown_item:not(:first-of-type) {
+    color: #000;
+  }
+
+  .form__input{
+    padding: 10px 0 10px 4px;
+    width: 100%;
+    font-size: 16px; 
+    border-bottom: 1px solid #000;
+  }
+
+  .form__datalist_item{
+    width: 100%;
+    font-size: 16px;
+    line-height: 140%;
+    padding: 5px 0;
+  }
+
+  .form__dropdown_item{
+    width: 100%;
+    font-size: 16px;
+    line-height: 140%;
+    padding: 5px 0;
+  }
+
+  .box{
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+
+  }
+
+  .box__item{
+    flex: 1;
+  }
+
+  .btn{
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .btn-submit{
+    font-size: 20px;
+    border-radius: 8px;
+    padding: 15px 150px;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+  }
+</style>
