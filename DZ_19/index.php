@@ -13,7 +13,7 @@
 
     <!-- PAYMENT DETAILS -->
     <section class="form__container">
-      <h3 class="title">PAYMENT DETAILS</h2>
+      <h3 class="title">PAYMENT DETAILS</h3>
 
         <!-- NAME OF CARD -->
         <div class="form__datalist">
