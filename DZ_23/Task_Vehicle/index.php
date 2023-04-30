@@ -34,15 +34,10 @@ class Vehicle{
   private bool $isEngineStarted;
 
 
-  public function __construct(
-    string $color, 
-    bool $isEngineStarted, 
-    float $fuelLevel, 
-    float $oilLevel, 
-    float $antifreezeLevel, 
-    float $batteryLevel,
+  public function __construct(string $color, bool $isEngineStarted, float $fuelLevel, 
+                              float $oilLevel, float $antifreezeLevel, float $batteryLevel,
     ){
-      $this->color = $color;
+      $this->color = ucfirst($color);
       $this->isEngineStarted = $isEngineStarted;
       $this->fuelLevel = $fuelLevel;
       $this->oilLevel = $oilLevel;
@@ -52,7 +47,7 @@ class Vehicle{
 
 
   public function setColor(string $color){
-    $this->color = $color;
+    $this->color = ucfirst($color);
   }
   public function setEngineStarted(bool $isEngineStarted){
     $this->isEngineStarted = $isEngineStarted;
@@ -93,15 +88,15 @@ class Vehicle{
 
   public function startEngine(){
     if($this->isEngineStarted == true && $this->fuelLevel > 0 && $this->batteryLevel > 0){
-      echo 'Engine is already running<br>';
+      echo 'Engine is already running.<br>';
     }
     else{
       if($this->fuelLevel > 0 && $this->oilLevel > 0 && $this->antifreezeLevel > 0 && $this->batteryLevel > 0){
         $this->setEngineStarted(true);
-        echo 'Engine strted<br>';
+        echo 'Engine strted.<br>';
       }
       else{
-        echo "Can't start the engine<br>";
+        echo "Can't start the engine.<br>";
       }
     }
   }
@@ -110,18 +105,14 @@ class Vehicle{
   public function stopEngine(){
     if($this->isEngineStarted == true){
       $this->setEngineStarted(false);
-      echo 'Engine stopped<br>';
+      echo 'Engine stopped.<br>';
     }
     else{
-      echo 'Engine is alredy stopped<br>';
+      echo 'Engine is alredy stopped.<br>';
     }
   }
 }
 
-// $vehicle = new Vehicle('green', false, 1, 1, 1, 1);
-
-// echo $vehicle->startEngine();
-// echo $vehicle->stopEngine();
 
 
 class Car extends Vehicle{
@@ -132,33 +123,25 @@ class Car extends Vehicle{
   private int $doorAmount;
   private float $topSpeed;
 
-  
-  public function __counstruct(
-    string $brand,
-    string $model,
-    int $doorAmount,
-    float $topSpeed,
-    string $color, 
-    bool $isEngineStarted, 
-    float $fuelLevel, 
-    float $oilLevel, 
-    float $antifreezeLevel, 
-    float $batteryLevel,
-  ){
-    parent::__construct($color, $isEngineStarted, $fuelLevel, $oilLevel, $antifreezeLevel, $batteryLevel,);
-    $this->brand = $brand;
-    $this->model = $model;
+
+  public function __construct(string $color, bool $isEngineStarted, float $fuelLevel, 
+                              float $oilLevel, float $antifreezeLevel, float $batteryLevel, 
+                              string $brand, string $model, int $doorAmount, float $topSpeed,)
+{
+    parent::__construct($color, $isEngineStarted, $fuelLevel, $oilLevel, $antifreezeLevel, $batteryLevel);
+
+    $this->brand = ucfirst($brand);
+    $this->model = ucfirst($model);
     $this->doorAmount = $doorAmount;
     $this->topSpeed = $topSpeed;
-  }
-  
+}
 
 
   public function setBrand(string $brand){
-    $this->brand = $brand;
+    $this->brand = ucfirst($brand);
   }
   public function setModel(string $model){
-    $this->model = $model;
+    $this->model = ucfirst($model);
   }
   public function setDoorAmount(int $doorAmount){
     $this->doorAmount = $doorAmount;
@@ -180,28 +163,101 @@ class Car extends Vehicle{
   public function getTopSpeed(){
     return $this->topSpeed;
   }
+
+
+  public function bodyType(){
+    if($this->doorAmount == 2){
+      return 'Coupe<br>';
+    }
+    elseif($this->doorAmount == 3) {
+      return 'Hatchback or SUV 3 doord<br>';
+    }
+    elseif($this->doorAmount == 4){
+      return 'Sedan<br>';
+    }
+    elseif($this->doorAmount == 5){
+      return 'Hatchback or SUV 5 doord<br>';
+    }
+    else{
+      return "Well, I didn't think of that :)<br>";
+    }
+  }
+
+
+  public function carInfo(){
+    return "$this->brand $this->model<br> Top speed: $this->topSpeed km/h<br>" . $this->bodyType();
+  }
 }
 
-$car = new Car();
+$car = new Car('purple', false, 1, 1, 1, 1, 'honda', 'accord', 2, 209);
 
-// echo $car->startEngine();
-// echo $car->stopEngine();
+echo $car->getColor() . ' ' . $car->carInfo();
+echo $car->startEngine();
+echo $car->stopEngine();
+echo '<br>';
+
+
 
 class Motorcycle extends Vehicle{
 
-  private $brand;
-  private $model;
-  private $topSpeed;
+  private string $brand;
+  private string $model;
+  private string $type;
+  private float $topSpeed;
+
+
+  public function __construct(string $color, bool $isEngineStarted, float $fuelLevel,
+                              float $oilLevel, float $antifreezeLevel, float $batteryLevel,
+                              string $brand, string $model, string $type, float $topSpeed,
+  ){
+    parent::__construct($color, $isEngineStarted, $fuelLevel, $oilLevel, $antifreezeLevel, $batteryLevel,);
+
+    $this->brand = ucfirst($brand);
+    $this->model = ucfirst($model);
+    $this->type = ucfirst($type);
+    $this->topSpeed = $topSpeed;
+  }
+
+
+  public function setBrand(string $brand){
+    $this->brand = $brand;
+  }
+  public function setModel(string $model){
+    $this->model = $model;
+  }
+  public function setType(string $type){
+    $this->type = $type;
+  }
+  public function setTopSpeed(float $topSpeed){
+    $this->topSpeed = $topSpeed;
+  }
+
+
+  public function getBrand(){
+    return $this->brand;
+  }
+  public function getModel(){
+    return $this->model;
+  }
+  public function getType(){
+    return $this->type;
+  }
+  public function getTopSpeed(){
+    return $this->topSpeed;
+  }
+
+
+  public function motorcycleInfo(){
+    return "$this->brand $this->model<br> Type: $this->type<br> Top speed: $this->topSpeed km/h<br>";
+  }
 
 }
 
+$motorcycle = new Motorcycle('black', false, 1, 1, 1, 1, 'kawasaki', 'vn1600 classic', 'touring', 165);
 
+echo $motorcycle->getColor() . ' ' . $motorcycle->motorcycleInfo();
+echo $motorcycle->startEngine();
+echo $motorcycle->stopEngine();
+echo '<br>';
 
-
-
-
-
-
-
-
-
+?>
