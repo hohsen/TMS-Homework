@@ -25,11 +25,7 @@
 class Vehicle{
 
   private string $color;
-
-  private float $fuelLevel;
-  private float $oilLevel;
-  private float $antifreezeLevel;
-  private float $batteryLevel;
+  // private int $doorAmount;
 
   private bool $isEngineStarted;
 
@@ -39,10 +35,6 @@ class Vehicle{
     ){
       $this->color = ucfirst($color);
       $this->isEngineStarted = $isEngineStarted;
-      $this->fuelLevel = $fuelLevel;
-      $this->oilLevel = $oilLevel;
-      $this->antifreezeLevel = $antifreezeLevel;
-      $this->batteryLevel = $batteryLevel;
   }
 
 
@@ -52,18 +44,6 @@ class Vehicle{
   public function setEngineStarted(bool $isEngineStarted){
     $this->isEngineStarted = $isEngineStarted;
   }
-  public function setFuelLevel(float $fuelLevel){
-    $this->fuelLevel = $fuelLevel;
-  }
-  public function setOilLevel(float $oilLevel){
-    $this->oilLevel = $oilLevel;
-  }
-  public function setAntifreezelevel(float $antifreezeLevel){
-    $this->antifreezeLevel = $antifreezeLevel;
-  }
-  public function setBatteryLevel(float $batteryLevel){
-    $this->batteryLevel = $batteryLevel;
-  }
 
 
   public function getColor(){
@@ -72,32 +52,15 @@ class Vehicle{
   public function getEngineStarted(){
     return $this->isEngineStarted;
   }
-  public function getFuelLevel(){
-    return $this->fuelLevel;
-  }
-  public function getOilLevel(){
-    return $this->oilLevel;
-  }
-  public function getAntifreezelevel(){
-    return $this->antifreezeLevel;
-  }
-  public function getBatteryLevel(){
-    return $this->batteryLevel;
-  }
 
 
   public function startEngine(){
-    if($this->isEngineStarted == true && $this->fuelLevel > 0 && $this->batteryLevel > 0){
-      echo 'Engine is already running.<br>';
+    if($this->isEngineStarted == false){
+      $this->setEngineStarted(true);
+      echo 'Engine started.<br>';
     }
     else{
-      if($this->fuelLevel > 0 && $this->oilLevel > 0 && $this->antifreezeLevel > 0 && $this->batteryLevel > 0){
-        $this->setEngineStarted(true);
-        echo 'Engine strted.<br>';
-      }
-      else{
-        echo "Can't start the engine.<br>";
-      }
+      echo 'Engine is already running.<br>';
     }
   }
 
@@ -250,14 +213,62 @@ class Motorcycle extends Vehicle{
   public function motorcycleInfo(){
     return "$this->brand $this->model<br> Type: $this->type<br> Top speed: $this->topSpeed km/h<br>";
   }
-
 }
 
-$motorcycle = new Motorcycle('black', false, 1, 1, 1, 1, 'kawasaki', 'vn1600 classic', 'touring', 165);
+$motorcycle = new Motorcycle('black', true, 1, 1, 1, 1, 'kawasaki', 'vn1600 classic', 'touring', 165);
 
 echo $motorcycle->getColor() . ' ' . $motorcycle->motorcycleInfo();
 echo $motorcycle->startEngine();
 echo $motorcycle->stopEngine();
 echo '<br>';
+
+
+
+
+
+
+
+
+
+
+
+// class Engine{
+
+//   private float $fuelLevel;
+//   private float $oilLevel;
+//   private float $antifreezeLevel;
+//   private float $batteryLevel;
+
+
+//   public function setFuelLevel(float $fuelLevel){
+//     $this->fuelLevel = $fuelLevel;
+//   }
+//   public function setOilLevel(float $oilLevel){
+//     $this->oilLevel = $oilLevel;
+//   }
+//   public function setAntifreezelevel(float $antifreezeLevel){
+//     $this->antifreezeLevel = $antifreezeLevel;
+//   }
+//   public function setBatteryLevel(float $batteryLevel){
+//     $this->batteryLevel = $batteryLevel;
+//   }
+
+
+//   public function getFuelLevel(){
+//     return $this->fuelLevel;
+//   }
+//   public function getOilLevel(){
+//     return $this->oilLevel;
+//   }
+//   public function getAntifreezelevel(){
+//     return $this->antifreezeLevel;
+//   }
+//   public function getBatteryLevel(){
+//     return $this->batteryLevel;
+//   }
+
+// }
+
+
 
 ?>
