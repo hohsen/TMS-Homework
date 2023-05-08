@@ -1,6 +1,6 @@
 <?php
 
-include_once('./Trait/Calculate.php');
+include_once('./Traits/Calculate.php');
 
 class Invoice extends Product{
     

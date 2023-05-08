@@ -1,6 +1,6 @@
 <?php
 
-include_once('./Interface/DocumentInterface.php');
+include_once('./Interfaces/DocumentInterface.php');
 
 class ImageDocument implements DocumentInterface{
     private string $type;

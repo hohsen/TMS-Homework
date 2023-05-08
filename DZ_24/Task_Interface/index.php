@@ -31,10 +31,10 @@
 
 <?php
 
-include_once('./Interface/DocumentInterface.php');
-include_once('./Class/TextDocument.php');
-include_once('./Class/ImageDocument.php');
-include_once('./Class/VideoDocument.php');
+include_once('./Interfaces/DocumentInterface.php');
+include_once('./Classes/TextDocument.php');
+include_once('./Classes/ImageDocument.php');
+include_once('./Classes/VideoDocument.php');
 
 $textDocument = new TextDocument('.txt', 'Lorem', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia, numquam.');
 echo $textDocument->process() . '<br><br>';

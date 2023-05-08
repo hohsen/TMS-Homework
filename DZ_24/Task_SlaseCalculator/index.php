@@ -106,10 +106,10 @@ products - список продуктов, которые включены в �
 
 <?php
 
-include_once('./Trait/Calculate.php');
-include_once('./Class/Product.php');
-include_once('./Class/Order.php');
-include_once('./Class/Invoice.php');
+include_once('./Traits/Calculate.php');
+include_once('./Classes/Product.php');
+include_once('./Classes/Order.php');
+include_once('./Classes/Invoice.php');
 
 $product1 = new Product(1, 'Paper', 1.85);
 $product2 = new Product(2, 'Apple', 0.99);
