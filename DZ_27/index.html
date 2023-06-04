@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="Styles/style.css">
+</head>
+<body>
+    <form class="form" action="insert.php" method="post">
+        <h2 class="header2">ADD TO DB</h2>
+        <p>
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name">
+        </p>
+        <p>
+            <label for="age">Age:</label>
+            <input type="number" name="age" id="age">
+        </p>
+        <p>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email">
+        </p>
+        <button class="btn" type="submit" name="submit">Submit</button>
+    </form>
+
+    <form class="form" action="update.php" method="post">
+        <h2 class="header2">UPDATE USER BY ID</h2>
+        <p>
+            <label for="userId">ID: </label>
+            <input type="number" name="userId" id="userId">
+        </p>
+        <p>
+            <label for="newName">New name:</label>
+            <input type="text" name="newName" id="newName">
+        </p>
+        <p>
+            <label for="newAge">New age:</label>
+            <input type="number" name="newAge" id="newAge">
+        </p>
+        <p>
+            <label for="newEmail">New email:</label>
+            <input type="email" name="newEmail" id="newEmail">
+        </p>
+        <button class="btn" type="submit" name="change">Change</button>
+    </form>
+
+    <form class="form" action="select.php" method="post">
+        <h2 class="header2">SEARCH USER BY ID</h2>
+        <p>
+            <label for="userId">ID: </label>
+            <input type="number" name="userId" id="userIdToFind">
+        </p>
+        <button class="btn" type="submit" name="find">FIND</button>
+    </form>
+
+    <form class="form" action="delete.php" method="post">
+        <h2 class="header2">DELETE USER BY ID</h2>
+        <p>
+            <label for="userId">ID: </label>
+            <input type="number" name="userId" id="userIdToDelete">
+        </p>
+        <button class="btn" type="submit" name="delete">DELETE</button>
+    </form>
+</body>
+</html>
