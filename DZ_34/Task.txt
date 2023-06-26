@@ -1,0 +1,50 @@
+Разбить класс на разные классы по смыслу. 
+Вывести эти методы в одном общем классе, можно даже в одном методе. 
+Используете букву S и D из урока. Это как минимум. 
+По возможности расширяете функционал с буквой O.
+
+
+
+class Example
+{
+
+    private $orderItems;
+    private $customer;
+    private $shippingAddress;
+
+    public function __construct(
+        $orderItems,
+        $customer,
+        $shippingAddress
+    )
+    {
+        $this->orderItems = $orderItems;
+        $this->customer = $customer;
+        $this->shippingAddress = $shippingAddress;
+    }
+
+    public function getOrderItems() {
+        return $this->orderItems;
+    }
+
+    public function getShippingAddress()
+    {
+        return $this->shippingAddress;
+    }
+
+    public function calculateTotal() {
+        // Логика расчет общей стоимости заказа
+    }
+
+    public function processPayment() {
+        // Логика обработки платежа
+    }
+
+    public function shipOrder() {
+        // Логика доставки
+    }
+
+    public function generateInvoice() {
+        // Генерация счета-фактур
+    }
+}
