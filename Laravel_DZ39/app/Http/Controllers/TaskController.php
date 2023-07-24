@@ -31,20 +31,22 @@ class TaskController extends Controller
         return redirect()->route('tasks.index');
     }
 
-    public function show(Task $task)
+    public function show(string $id)
     {
+        $task = Task::findOrFail($id);
         return view('tasks.show', compact('task'));
     }
 
-    public function edit(Task $task)
+    public function edit(string $id)
     {
+        $task = Task::findOrFail($id);
         return view('tasks.edit', compact('task'));
     }
 
     public function update(Request $request, Task $task)
     {
         $request->validate([
-            'title'=>'required|unique:tasks',
+            'title'=>'required',
             'description'=>'required',
             'deadline'=>'required',
         ]);
