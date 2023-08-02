@@ -49,9 +49,9 @@
     const hoursInDay = 24
     const daysInYear = 365
 
-    let myAgeInYears = 26
+    const myAgeInYears = 26
     
-    let myAgeInSeconds = myAgeInYears * daysInYear * hoursInDay * minInHohur * secInMin
+    const myAgeInSeconds = myAgeInYears * daysInYear * hoursInDay * minInHohur * secInMin
 
     console.log(myAgeInSeconds)
 ```
@@ -82,6 +82,10 @@
 
     console.log(typeof count)
     console.log(typeof userName)
+
+    // Способ 3 приведения к строке
+
+    let count = prompt('enter a number')
 ```
 
 #### Task 4 💻
