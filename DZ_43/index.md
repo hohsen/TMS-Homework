@@ -41,7 +41,6 @@
 решение:
 
 ```javascript
-<<<<<<< HEAD
     const key = true;
     const documents = true;
     const pen = true;
@@ -51,22 +50,6 @@
 
     if(key && documents && pen && (apple || orange)) console.log(shouldGoToWork = true);
     else console.log(shouldGoToWork = false);
-=======
-    let key = true;
-    let documents = true;
-    let pen = true;
-    let apple = false;
-    let orange = true;
-    let shouldGoToWork;
-
-    if(key && documents && pen && (apple || orange)){
-        shouldGoToWork = true;
-        console.log(shouldGoToWork);
-    } else {
-        shouldGoToWork = false
-        console.log(shouldGoToWork);
-    }
->>>>>>> c18a132c4d3ec5d954cc9df441663f0a93cd402a
 ```
 
 #### Task 3 (boolean operators, conditionals)
@@ -77,15 +60,9 @@
 решение:
 
 ```javascript
-<<<<<<< HEAD
     const year = prompt('Enter year:');
 
     if(((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) console.log('This is leap year');
-=======
-    let year = prompt('Enter year:');
-
-    if(year % 4 == 0) console.log('This is leap year');
->>>>>>> c18a132c4d3ec5d954cc9df441663f0a93cd402a
     else console.log('This is not a leap year');
 ```
 
@@ -100,11 +77,7 @@
 решение:
 
 ```javascript
-<<<<<<< HEAD
     const number = prompt('Enter number:');
-=======
-    let number = prompt('Enter number:');
->>>>>>> c18a132c4d3ec5d954cc9df441663f0a93cd402a
 
     if(number % 5 == 0 && number % 3 ==0)console.lo('FizBuz');
     else if(number % 3 == 0)console.log('Buz');
@@ -125,18 +98,10 @@
 решение:
 
 ```javascript
-<<<<<<< HEAD
 const monthNumber = prompt('Enter month number:');
 const year = prompt('Enter year:');
 
 switch (year % 4){
-=======
-let monthNumber = prompt('Enter month number:');
-let year = prompt('Enter year:');
-
-year = year % 4;
-switch (year){
->>>>>>> c18a132c4d3ec5d954cc9df441663f0a93cd402a
     case 0:
         if(monthNumber <= 12 && monthNumber == 2) console.log("29 days");
         else if(monthNumber <= 12 && monthNumber % 2 == 1) console.log("31 days");
@@ -212,33 +177,18 @@ for (let i = 0; i < 6; i++) {
 решение:
 
 ```javascript
-<<<<<<< HEAD
 const monthNumber;
 const year;
-=======
-let monthNumber;
-let year;
->>>>>>> c18a132c4d3ec5d954cc9df441663f0a93cd402a
 
 while(true){
     monthNumber = prompt('Enter month number:');
     year = prompt('Enter year:');
 
-<<<<<<< HEAD
     if(monthNumber == 'plsstop' || year == 'plsstop') break;
 
     monthNumber = Number(monthNumber);
 
     switch (Number(year % 4)){
-=======
-    if(monthNumber == 'plsstop' || year == 'plsstop'){
-        break;
-    }
-    monthNumber = Number(monthNumber);
-    year = year % 4;
-
-    switch (Number(year)){
->>>>>>> c18a132c4d3ec5d954cc9df441663f0a93cd402a
         case 0:
             if(monthNumber <= 12 && monthNumber == 2) console.log("29 days");
             else if(monthNumber <= 12 && monthNumber % 2 == 1) console.log("31 days");
