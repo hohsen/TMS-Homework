@@ -169,7 +169,16 @@ console.log(safeMul(5,'5'));
 решение:
 
 ```javascript
+const a = prompt('Enter side a:');
+const b = prompt('Enter side b:');
+const c = prompt('Enter side c:');
 
+function triangleBuilder(a, b, c){
+    if((a + b) > c && (a + c) > b && (b + c) > a) alert('Triangle exist');
+    else alert('Triangle does not exist');
+}
+
+console.log(triangleBuilder(a, b, c));
 ```
 
 #### Task 2 👨‍🏫
