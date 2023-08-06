@@ -198,7 +198,50 @@ console.log(triangleBuilder(a, b, c));
 решение:
 
 ```javascript
+const taxRate = 0.2;
+const phonePrice = Number(prompt('Enter phone price:'));
+const accessoriesPrice = Number(prompt('Enter accessories price:'));
+const cartPrice = phonePrice + accessoriesPrice;
 
+let balance = Number(prompt('Bank account balance:'));
+let totalPrice = calculateTotalPrice(balance);
+
+function calculateTotalPriceWithTax(totalPrice){
+    return totalPrice += calculateTax(totalPrice);
+}
+
+function calculateTax(totalPrice){
+    return tax = totalPrice * taxRate;
+}
+
+function priceFormat(price){
+    return `${price.toFixed(2)} €`;
+}
+
+function showTotalPrice(totalPrice){
+    return `Total price: ${priceFormat(totalPrice)}`;
+}
+
+function calculateTotalPrice(balance) {
+    let totalPrice = 0;
+
+    while (cartPrice < balance) {
+        totalPrice += cartPrice;
+        balance -= cartPrice;
+    }
+    return totalPrice;
+}
+
+function fun(balance, totalPrice){
+    totalPrice = calculateCartPriceWithTax(totalPrice);
+
+    console.log(showTotalPrice(totalPrice));
+
+    if(balance < totalPrice) return console.log('Not enough balance.');
+    console.log('Purchase successful.');
+}
+
+console.log(fun(balance, totalPrice));
 ```
 
 #### Task 3 👨‍🏫 - дополнительно
@@ -212,5 +255,20 @@ console.log(triangleBuilder(a, b, c));
 решение:
 
 ```javascript
+const n = prompt('Enter n:');
+const m = prompt('Enter m:');
 
+function countBreakePoints(n, m){
+    if(isNaN(n) || isNaN(m) || (n == 1 && m == 1)) return 0;
+    if(n < 0 || m < 0) return alert('Error. Numbers must be positive.');
+    if(n > 1 || m > 1){
+        return n * m - 1;
+    }
+}
+console.log(countBreakePoints(n, m));
+
+// Если брать n = 2 на m = 2, то получается 3 надлома и это логично
+// Но можно и не соглаиться, ведь можно сказать, что за 2 налома (один по горизонтали и один по вертикали)
+// Вот и думай, какой вариант правильнее...
+// В данном решении будет 3 надлома
 ```
