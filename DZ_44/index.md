@@ -11,6 +11,22 @@
 
 > Если передадим число 100 то, надо вычислить сумму чисел от 0 до 100 (должно получится 5050)
 
+решение:
+
+```javascript
+const num = prompt('Enter a number:');
+
+function getSum(num){
+    let sum = 0;
+    for (let i = 0; i <= num; i++) {
+        sum += i;
+    }
+    return sum;
+}
+
+console.log(getSum(num));
+```
+
 #### Task 2 💻
 
 Напишите функцию которая в качестве аргумента принимает в себя сумму кредита который хочет получить клиент и верните результат переплаты по кредиту:
@@ -20,6 +36,23 @@
 
 > Мы пишем функцию для хорошего банка, поэтому сумма кредита не увеличивается.
 
+решение:
+
+```javascript
+const loanAmmount = prompt('Enter the desired loan amount:');
+
+function loanOverpayments(loanAmmount){
+    const interestRatePerYear = 17;
+    const years = 5;
+
+    // Формулу нагуглил и немного адаптировал, не ручаюсь за точность.
+    const interest = (loanAmmount * (interestRatePerYear * 0.01)) / (years * 12);
+    const total = ((loanAmmount / (years * 12)) + interest).toFixed(2);
+    return total;
+}
+
+console.log(loanOverpayments(loanAmmount));
+```
 
 #### Task 3 💻
 
@@ -34,6 +67,31 @@
     getSum(-1, 2) == 2  // -1 + 0 + 1 + 2 = 2
 ```
 
+решение:
+
+```javascript
+const a = Number(prompt('Enter first number:'));
+const b = Number(prompt('Enter second number:'));
+
+function getSum(a, b){
+    let sum = 0;
+
+    if(isNaN(a) || isNaN(b)) return console.log('Wrong input. Expected number.');
+    if(a == b) return a;
+    if(a > b){
+        let c = a;
+        a = b;
+        b = c;
+    }
+    for (let i = a; i <= b; i++) {
+        sum += i;
+    }
+    return sum;
+}
+
+console.log(getSum(a, b));
+```
+
 #### Task 4 💻
 
 Напишите функцию **fooboo** которая принимает в качестве аргумента три параметра:
@@ -43,6 +101,27 @@
 + функцию **boo** которая выводит в консоль 'boo'
 
 > Если переданное булевое значение **true** запускаем функцию **foo** иначе **boo**
+
+решение:
+
+```javascript
+let boolean = false;
+
+function fooboo(boolean, foo, boo){
+    if(boolean) foo();
+    else boo();
+}
+
+function foo(){
+    console.log('foo');
+}
+
+function boo(){
+    console.log('boo');
+}
+
+console.log(fooboo(boolean, foo, boo));
+```
 
 #### Task 5 💻
 
@@ -61,11 +140,46 @@ safeMul(5, 5) // 25
 safeMul(5, "5") // 0, ошибка в консоли - неверный тип параметра
 ```
 
+решение:
+
+```javascript
+function withNumberArgs(funkcija){
+    return function(a, b){
+        if(typeof a !== 'number' || typeof b !== 'number'){
+            console.error('Wrong input. Expected number.');
+            return 0;
+        }
+        return funkcija(a, b);
+    }
+}
+
+const mul = (a, b) => a * b;
+const safeMul = withNumberArgs(mul);
+
+console.log(safeMul(5,5));
+console.log(safeMul(5,'5'));
+```
+
 ### ADVANCED level
 
 #### Task 1 👨‍🏫 
 
 + Реализуйте функцию, который принимает 3 целочисленных значения a, b, c. Функция должна возвращать **true**, если треугольник можно построить со сторонами заданной длины, и **false** в любом другом случае.
+
+решение:
+
+```javascript
+const a = prompt('Enter side a:');
+const b = prompt('Enter side b:');
+const c = prompt('Enter side c:');
+
+function triangleBuilder(a, b, c){
+    if((a + b) > c && (a + c) > b && (b + c) > a) alert('Triangle exist');
+    else alert('Triangle does not exist');
+}
+
+console.log(triangleBuilder(a, b, c));
+```
 
 #### Task 2 👨‍🏫
 
@@ -81,6 +195,54 @@ safeMul(5, "5") // 0, ошибка в консоли - неверный тип �
 
 + Как последний этап, попробуйте включить ввод данных в вашу программу, например с помощью функции prompt(..). Вы можете, например, запросить у пользователя баланс банковского счета. Развлекайтесь и будьте изобретательны!
 
+решение:
+
+```javascript
+const taxRate = 0.2;
+const phonePrice = Number(prompt('Enter phone price:'));
+const accessoriesPrice = Number(prompt('Enter accessories price:'));
+const cartPrice = phonePrice + accessoriesPrice;
+
+let balance = Number(prompt('Bank account balance:'));
+let totalPrice = calculateTotalPrice(balance);
+
+function calculateTotalPriceWithTax(totalPrice){
+    return totalPrice += calculateTax(totalPrice);
+}
+
+function calculateTax(totalPrice){
+    return tax = totalPrice * taxRate;
+}
+
+function priceFormat(price){
+    return `${price.toFixed(2)} €`;
+}
+
+function showTotalPrice(totalPrice){
+    return `Total price: ${priceFormat(totalPrice)}`;
+}
+
+function calculateTotalPrice(balance) {
+    let totalPrice = 0;
+
+    while (cartPrice < balance) {
+        totalPrice += cartPrice;
+        balance -= cartPrice;
+    }
+    return totalPrice;
+}
+
+function fun(balance, totalPrice){
+    totalPrice = calculateCartPriceWithTax(totalPrice);
+
+    console.log(showTotalPrice(totalPrice));
+
+    if(balance < totalPrice) return console.log('Not enough balance.');
+    console.log('Purchase successful.');
+}
+
+console.log(fun(balance, totalPrice));
+```
 
 #### Task 3 👨‍🏫 - дополнительно
 
@@ -89,3 +251,24 @@ safeMul(5, "5") // 0, ошибка в консоли - неверный тип �
 + Например, если вам дается плитка шоколада размером 2 x 1, вы можете разделить ее на отдельные квадраты всего за один надлом, но для размера 3 x 1 вы должны сделать два надлома.
 
 + Если входные данные недействительны, вы должны вернуть 0 (поскольку надломы не требуются, если у нас нет шоколада для разделения). Ввод всегда будет неотрицательным целым числом.
+
+решение:
+
+```javascript
+const n = prompt('Enter n:');
+const m = prompt('Enter m:');
+
+function countBreakePoints(n, m){
+    if(isNaN(n) || isNaN(m) || (n == 1 && m == 1)) return 0;
+    if(n < 0 || m < 0) return alert('Error. Numbers must be positive.');
+    if(n > 1 || m > 1){
+        return n * m - 1;
+    }
+}
+console.log(countBreakePoints(n, m));
+
+// Если брать n = 2 на m = 2, то получается 3 надлома и это логично
+// Но можно и не соглаиться, ведь можно сказать, что за 2 налома (один по горизонтали и один по вертикали)
+// Вот и думай, какой вариант правильнее...
+// В данном решении будет 3 надлома
+```
