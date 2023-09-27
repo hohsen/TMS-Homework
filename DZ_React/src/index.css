@@ -1,0 +1,53 @@
+body {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  padding: 5px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 56px;
+  line-height: 64px;
+}
+
+h2 {
+  font-size: 40px;
+  line-height: 60px;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.subline {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 5%;
+}
+
+.body-text {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.body-text-2 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+}
