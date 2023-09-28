@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 
 import { ChangeColorButton } from "./features/ChangeColor";
+import { List } from "./features/ListRender/List";
+import { mockTasks } from "./mockData";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -10,6 +12,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <div>
-    <ChangeColorButton />,
+    <ChangeColorButton />
+    <h2>To-do list</h2>
+    <List items={mockTasks} />
   </div>,
 );
